@@ -124,7 +124,7 @@ module.exports = {
     await connection("files_organizador").insert({
       nome: "user-icon",
       size: "3,12KB",
-      url: "http://26.134.180.105:3333/files/user-icon.png",
+      url: "https://i.imgur.com/WU6GE9a.png",
       email_organizador: email,
       key: "user-icon",
     });

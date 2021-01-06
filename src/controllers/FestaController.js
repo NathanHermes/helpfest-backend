@@ -67,7 +67,10 @@ module.exports = {
       numero,
       cidade,
       uf,
+      imgurURL,
     } = request.body;
+
+    console.log(request.body);
 
     /**
      * Buscando o email do organizador que está criando a festa por meio do cabeçalho
@@ -120,7 +123,11 @@ module.exports = {
       festa_id,
     });
 
-    const url = `http://26.134.180.105:3333/files/${key}`;
+    var url = imgurURL;
+
+    if (imgurURL === "undefined") {
+      url = `http://26.134.180.105:3333/files/${key}`;
+    }
 
     await connection("files_festa").insert({
       nome,
@@ -218,10 +225,10 @@ module.exports = {
         .select("key")
         .first();
 
-        await promisify(fs.unlink)(
-          path.resolve(__dirname, "..", "..", "temp", "uploads", file.key)
-        );
-      
+      await promisify(fs.unlink)(
+        path.resolve(__dirname, "..", "..", "temp", "uploads", file.key)
+      );
+
       if (nome !== "undefined") {
         const url = `http://26.134.180.105:3333/files/${key}`;
 
