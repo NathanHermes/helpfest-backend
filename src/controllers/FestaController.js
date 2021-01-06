@@ -166,6 +166,7 @@ module.exports = {
       numero,
       cidade,
       uf,
+      imgurURL
     } = request.body;
 
     /**
@@ -230,7 +231,11 @@ module.exports = {
       );
 
       if (nome !== "undefined") {
-        const url = `http://26.134.180.105:3333/files/${key}`;
+        var url = imgurURL;
+
+        if(imgurURL === "undefined") {
+          const url = `http://26.134.180.105:3333/files/${key}`;
+        }
 
         await connection("files_festa")
           .update({

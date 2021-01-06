@@ -146,6 +146,7 @@ module.exports = {
       numero,
       cidade,
       uf,
+      imgurURL
     } = request.body;
 
     /**   email: reponsavel por armazenar o email enviado pelo header da requisição HTTP   */
@@ -187,7 +188,11 @@ module.exports = {
       const { originalname: nome, size, filename: key } = request.file;
 
       /**   url: responsavel por concatenar a variavel key a url e armazanar essa url da imagem/file   */
-      const url = `http://26.134.180.105:3333/files/${key}`;
+      var url = imgurURL;
+
+      if(imgurURL === "undefined") {  
+        url = `http://26.134.180.105:3333/files/${key}`;
+      }
 
       /**   file_organizador: responsavel por armazenar a key pesquisada     */
       const file_organizador = await connection("files_organizador")
