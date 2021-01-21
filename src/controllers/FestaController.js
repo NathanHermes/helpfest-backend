@@ -204,7 +204,7 @@ module.exports = {
         convidados,
         outros,
       })
-      .where("email_organizador", email_organizador);
+      .where("id", id);
 
     /**
      * Alterando as informações tabela localizacao_festa pelas novas
@@ -230,22 +230,21 @@ module.exports = {
         path.resolve(__dirname, "..", "..", "temp", "uploads", file.key)
       );
 
-      if (nome !== "undefined") {
-        var url = imgurURL;
+      var url = imgurURL;
 
-        if(imgurURL === "undefined") {
-          const url = `http://26.134.180.105:3333/files/${key}`;
-        }
-
-        await connection("files_festa")
-          .update({
-            nome,
-            size,
-            url,
-            key,
-          })
-          .where("festa_id", id);
+      if(imgurURL === "undefined") {
+        const url = `http://26.134.180.105:3333/files/${key}`;
       }
+
+      await connection("files_festa")
+        .update({
+          nome,
+          size,
+          url,
+          key,
+        })
+        .where("festa_id", id);
+      
     }
 
     /**
