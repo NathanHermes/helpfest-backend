@@ -16,7 +16,7 @@ O Helpfest é uma aplicação que tem como objetivo facilitar a divulgação de 
 ## Back-end da aplicação
 <div align="center">
   <a href="#sobre">Sobre</a> •
-<div>  
+</div>  
 <br>
   
 ### Sobre
